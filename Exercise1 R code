@@ -1,9 +1,11 @@
 #if necessary, download necessary packages
 install.packages("curl")
 install.packages("ggplot2")
+install.packages("scales")
 #load packages
 library("curl")
 library("ggplot2")
+library("scales")
 
 #load in data
 E1 <- read.csv(curl("https://raw.githubusercontent.com/savvasjconstantinou/RclasspRoject/master/Exercise1.csv"))
