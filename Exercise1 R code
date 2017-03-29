@@ -18,6 +18,9 @@ p <- ggplot(data=E1, aes(x=Year, y=End_Population))+
   xlab("Year") +
   ylab("Population") + 
   ggtitle("Exponential Population Growth Model") +
+#make the y and x scale prettier (more ticks and removes exponential in y)
+  scale_x_continuous(breaks=pretty_breaks(n=10)) + 
+  scale_y_continuous(breaks=pretty_breaks(n=10)) +
 #make a smooth line between the points, large enough so that points aren't seen  
   geom_smooth(span=0.1, col="black", size=1.6)
 p
