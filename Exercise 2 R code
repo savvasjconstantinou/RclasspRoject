@@ -27,8 +27,12 @@ p <- ggplot()+
   scale_y_continuous(breaks=pretty_breaks(n=10)) +
 #add horizontal line for carrying capacity "K" = 10,000
   geom_hline(yintercept=10000) +
-#add line for original data, color black
-  geom_line(data="E2A", aes(x=Year, y=Final), col="black")
+#add lines for original data
+  geom_line(data=E2A, aes(x=Year, y=Final), col="black") +
+#add line for reduced pop start
+  geom_line(data=E2B, aes(x=Year, y=Final), col="red") +
+#add line for r= 0.05
+  geom_line(data=E2C, aes(x=Year, y=Final), col="blue")
 p
 
 
