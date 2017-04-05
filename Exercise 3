@@ -1,0 +1,26 @@
+#if necessary, download necessary packages
+install.packages("deSolve")
+library(deSolve)
+
+#create a function that solves Lotka Volterra model
+LotVmod <- function (Time, State, Pars) {
+  with(as.list(c(State, Pars)), {
+  #prey  
+    dx = x*(alpha - beta*y)
+  #predator
+    dy = -y*(gamma - delta*x)
+    return(list(c(dx, dy)))
+  })
+}
+
+#set parameters of model
+Pars <- c(alpha = 2, beta = .5, gamma = .2, delta = .6)
+State <- c(x = 100, y = 100)
+Time <- seq(0, 100, by = 1)
+
+#create output after running model
+out <- as.data.frame(ode(func = LotVmod, y = State, parms = Pars, times = Time))
+
+#plot output
+matplot(out[,-1], type = "l", xlab = "Years", ylab = "Population", main="Lotka Volterra Predator Prey Interactions")
+legend('topright', c("Prey", "Predators"), lty = c(1,2), col = c(1,2), box.lwd = 0, cex=0.75)
